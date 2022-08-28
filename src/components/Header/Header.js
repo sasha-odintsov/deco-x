@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link as RouterLink } from "react-router-dom";
 import Link from '@mui/material/Link';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
@@ -15,25 +16,30 @@ import Divider from '@mui/material/Divider';
 import Button from '@mui/material/Button';
 import LocalMallIcon from '@mui/icons-material/LocalMall';
 
-
-// const useStyles = makeStyles((theme) => ({
-//   link: {
-//     marginRight: '20px'
-//   }
-// }));
 const pages = [
-  { name: "Prod1", href: "" },
-  { name: "Prod2", href: "" },
-  { name: "About", href: "" },
+  { name: "About", href: "/about" },
+  { name: "Decoration", href: "/deco" },
+  { name: "Furniture", href: "/furniture" },
 ]
 
 const Header = () => {
   const [open, setOpen] = useState(false);
   return (
-    <AppBar position="static" color='transparent' sx={{ background: 'rgba(0,0,0,.3)', borderBottom: '1px solid #aaa', boxShadow: '0'}}>
+    <AppBar 
+    position="static" 
+    color='transparent' 
+    sx={{ position: 'absolute', top: '0', background: 'rgba(0,0,0,.4)', borderBottom: '1px solid #aaa', boxShadow: '0'}}
+    >
       <Container maxWidth="lg">
         <Toolbar disableGutters>
-          <Drawer open={open} onClose={() => {setOpen(false)}}>
+          <Drawer open={open} onClose={() => {setOpen(false)}} 
+          // PaperProps={{
+          //   sx: {
+          //   backgroundColor: "pink",
+          //   color: "red",
+          //   }
+          // }}
+          >
             <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
               <IconButton onClick={() => {setOpen(false)}}>
                 <ChevronLeftIcon sx={{ ':hover': { color: '#aaa'} }}/>
@@ -46,11 +52,12 @@ const Header = () => {
               (<ListItem>
                 <Link 
                 key={page.name}
-                sx={{ ':hover': { color: '#ccc'} }}
-                variant="button" 
+                sx={{ ':hover': { color: '#ccc'}, textTransform: 'uppercase' }}
+                component={RouterLink}
                 underline="none" 
                 color='inherit'
-                href={page.href}
+                to={page.href}
+                onClick={() => {setOpen(false)}}
                 >
                   {page.name}
                 </Link>
@@ -66,12 +73,14 @@ const Header = () => {
           </Box> 
           <Typography
           variant="h5"
-          component="a"
-          href=""
+          component={RouterLink}
+          to="/"
           sx={{ 
           textDecoration: 'none', 
           marginRight: 'auto', 
           color: 'inherit', 
+          fontFamily: 'monospace',
+          letterSpacing: '.3rem',
           display: { xs: 'none', md: 'flex' } 
           }}
           >
@@ -79,11 +88,13 @@ const Header = () => {
           </Typography>
           <Typography
           variant="h5"
-          component="a"
-          href=""
+          component={RouterLink}
+          to="/"
           sx={{ 
           textDecoration: 'none', 
           justifyContent: 'center',
+          fontFamily: 'monospace',
+          letterSpacing: '.3rem',
           margin: 'auto', 
           color: 'inherit',
           display: { xs: 'flex', md: 'none' }
@@ -95,16 +106,25 @@ const Header = () => {
             {pages.map((page) => 
             (<Link 
               key={page.name}
-              sx={{ p: '20px 10px', borderBottom: '2px solid transparent', ':hover': { color: '#ccc', borderBottom: '2px solid #ccc'} }}
-              variant="button" 
+              variant="body2"
+              sx={{ p: '25px 10px', borderBottom: '2px solid transparent', textTransform: 'uppercase', ':hover': { color: '#ccc', borderBottom: '2px solid #ccc'} }}
+              component={RouterLink}
               underline="none" 
               color='inherit'
-              href={page.href}
+              to={page.href}
               >
                 {page.name}
               </Link>))}
           </Box>
-            <Button color='primary' variant="outlined" endIcon={<LocalMallIcon />}>CART</Button>
+            <Button 
+            color='primary'
+            variant="outlined"
+            endIcon={<LocalMallIcon />} 
+            component={RouterLink}
+            to="/cart"
+            >
+              CART
+            </Button>
         </Toolbar>
       </Container>
     </AppBar>

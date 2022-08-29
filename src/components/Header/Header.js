@@ -28,7 +28,7 @@ const Header = () => {
     <AppBar 
     position="static" 
     color='transparent' 
-    sx={{ position: 'absolute', top: '0', background: 'rgba(0,0,0,.4)', borderBottom: '1px solid #aaa', boxShadow: '0'}}
+    sx={{ position: 'absolute', top: '0', borderBottom: '1px solid #5f5f5f', boxShadow: '0'}}
     >
       <Container maxWidth="lg">
         <Toolbar disableGutters>

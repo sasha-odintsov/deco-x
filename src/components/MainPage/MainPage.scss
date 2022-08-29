@@ -1,8 +1,8 @@
 .main-page-wrap {
-    background: url(../../../public/image/Mod-Apartment.jpeg);
+    background: linear-gradient(rgba(0,0,0,.4), rgba(0,0,0,.4)), url(../../../public/image/Mod-Apartment.jpeg);
     background-size: cover;
     background-position: 50% 70%;
-    
-    min-height: 100vh;   
-    
+    min-height: 100vh;
+    // display: flex;
+    // align-items: center;
 }

@@ -1,7 +1,8 @@
+import { useState, useEffect } from 'react';
 import Paper from '@mui/material/Paper';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
-import Box from '@mui/material/Box';
+import Grid from '@mui/material/Grid';
 
 const ProductsPage = ({ title, dcrs, item }) => {
     return (
@@ -18,10 +19,9 @@ const ProductsPage = ({ title, dcrs, item }) => {
         </Paper>
         <Paper square sx={{ background: '#fff'}}>
             <Container maxWidth="lg" sx={{ transform: 'translateY(-200px)' }}>
-                {/* <Box sx={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between'}}>
-                    {item}                   
-                </Box> */}
-                {item} 
+                <Grid container rowSpacing={4} columnSpacing={2}>
+                    {item} 
+                </Grid>
             </Container>
         </Paper>
         </>

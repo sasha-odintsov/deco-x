@@ -14,11 +14,12 @@ import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import Divider from '@mui/material/Divider';
 import Button from '@mui/material/Button';
+import Badge from '@mui/material/Badge';
 import LocalMallIcon from '@mui/icons-material/LocalMall';
 
 const pages = [
   { name: "About", href: "/about" },
-  { name: "Decoration", href: "/deco" },
+  { name: "Decoration", href: "/home-decoration" },
   { name: "Furniture", href: "/furniture" },
 ]
 
@@ -119,7 +120,11 @@ const Header = () => {
             <Button 
             color='primary'
             variant="outlined"
-            endIcon={<LocalMallIcon />} 
+            endIcon={
+              <Badge badgeContent={0}>
+                <LocalMallIcon />
+              </Badge>
+          } 
             component={RouterLink}
             to="/cart"
             >

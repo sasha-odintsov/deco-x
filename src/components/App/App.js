@@ -10,6 +10,7 @@ import About from '../About/About';
 import Furniture from '../Furniture/Furniture';
 import Cart from '../Cart/Cart';
 import Footer from '../Footer/Footer';
+import ProductDetails from '../ProductDetails/ProductDetails';
 
 const darkTheme = createTheme({
   typography: {
@@ -45,10 +46,12 @@ function App() {
         <Header />
           <Routes>
             <Route path='/' element={<MainPage/>}/>
-            <Route path='/deco' element={<Deco/>}/>
+            <Route path='/home-decoration' element={<Deco/>}/>
             <Route path='/furniture' element={<Furniture/>}/>
             <Route path='/about' element={<About/>}/>
             <Route path='/cart' element={<Cart/>}/>
+            <Route path='/furniture/:id' element={<ProductDetails category={'furniture'}/>}/>
+            <Route path='/home-decoration/:id' element={<ProductDetails category={'home-decoration'}/>}/>
           </Routes>
         <Footer/ >
       </ThemeProvider>

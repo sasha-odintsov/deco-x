@@ -8,7 +8,6 @@ import { Button, CardActionArea, CardActions } from '@mui/material';
 import { useQuery } from 'react-query';
 import './ItemsList.scss';
 import Box from '@mui/material/Box';
-import { useNavigate } from 'react-router-dom';
 import { Link as RouterLink } from "react-router-dom";
 import Grow from '@mui/material/Grow';
 import { useState, useEffect } from 'react';
@@ -18,18 +17,17 @@ const ItemsList = ({ category }) => {
     const [show, setShow] = useState(false);
     useEffect(() => {setShow(true)}, []);
     const dispatch = useDispatch();
-    let navigate = useNavigate();
-    const { data, isLoading, isError } = useQuery('repoData', async () => {
+    const { data, isLoading, isError } = useQuery('products-' + category, async () => {
         const response = await fetch(`https://dummyjson.com/products/category/${category}`);
         const data = await response.json();
         console.log(data)
         return data.products;
       });
       if (isLoading) {
-        return 'Loading...';
+        return (<div style={{ minHeight: '60vh'}}>Loading...</div>);
       }
       if (isError) {
-        return 'Error';
+        return (<div style={{ minHeight: '60vh'}}>Error</div>);
       }
       return  (
         <>
@@ -38,7 +36,6 @@ const ItemsList = ({ category }) => {
                 <Grow in={show} timeout={1000}>
                 <Grid item xs={12} sm={6} md={4}>
                     <Card key={el.id} sx={{ maxWidth: "100%", position: 'relative' }}>
-                        {/* <CardActionArea onClick={() => {navigate('/details/' + category + '/' + el.id)}}> */}
                         <CardActionArea component={RouterLink} to={'/' + category + '/' + el.id}>
                             <CardMedia
                             component="img"

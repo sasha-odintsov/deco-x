@@ -30,9 +30,12 @@ const Cart = () => {
     });
     console.log(items)
     return (
-        <Container maxWidth="lg" sx={{ my: '150px' }}>
+        <Container maxWidth="lg" sx={{ my: '150px', minHeight: '40vh' }}>
             <Box sx={{ maxWidth: '500px', margin: '0 auto' }}>
                 <Typography variant='h4'>Cart</Typography>
+                {!items.length && 
+                <Typography color='text.secondary' my={5} textAlign='center'>Cart is empty</Typography>
+                }
                 <List sx={{ width: '100%', bgcolor: 'background.paper' }}>
                 {items.map((el) => {
                     return (
@@ -73,7 +76,7 @@ const Cart = () => {
                     )
                 })}
                 </List>
-                <Typography>Total: {items.total}</Typography>
+                <Typography>Total: {items.length ? items.total : 0}$</Typography>
             </Box>
         </Container>
     )

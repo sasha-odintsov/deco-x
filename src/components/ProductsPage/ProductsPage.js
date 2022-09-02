@@ -8,7 +8,7 @@ const ProductsPage = ({ title, dcrs, item }) => {
     return (
         <>
         <Paper>
-            <Container maxWidth="lg" sx={{ padding: '150px 0 250px 0' }}>
+            <Container maxWidth="lg" sx={{ padding: '150px 0 250px 0', minHeight: '40vh' }}>
                 <Typography variant='h4' textAlign='center'>
                     {title}
                 </Typography>

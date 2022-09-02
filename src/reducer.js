@@ -15,6 +15,5 @@ const INITIAL_STATE = {
       });
       return { cart: cart };
     }
-  
     return state;
   };

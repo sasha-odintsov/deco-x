@@ -12,8 +12,7 @@ import Button from '@mui/material/Button';
 const ProductDetails = ({ category }) => {
     let { id } = useParams();
     const dispatch = useDispatch();
-    // console.log(id)
-    const { data, isLoading, isError } = useQuery('repoData', () => {
+    const { data, isLoading, isError } = useQuery('details-' + category + id, () => {
         return fetch(`https://dummyjson.com/products/category/${category}`)
         .then((resp) => resp.json())
         .then((data) => data.products)
@@ -24,15 +23,15 @@ const ProductDetails = ({ category }) => {
         }) 
       });
       if (isLoading) {
-        return 'Loading...';
+        return (<div style={{ minHeight: '60vh'}}>Loading...</div>);
       }
       if (isError) {
-        return 'Error';
+        return (<div style={{ minHeight: '60vh'}}>Error</div>);
       }
       console.log(data)
       return (
         <Paper>
-            <Container maxWidth="lg" sx={{ py: '100px' }}>
+            <Container maxWidth="lg" sx={{ py: '150px' }}>
                 <Typography variant='h5' mb={3}>{data.title}</Typography>
                 <Grid container spacing={1}>
                     <Grid item sx={12} sm={6}>

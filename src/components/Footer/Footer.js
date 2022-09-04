@@ -7,7 +7,7 @@ import Box from '@mui/material/Box';
 
 const Footer = () => {
     return( 
-        <Paper sx={{ background: '#bddabc'}} square>
+        <Paper sx={{ background: '#bddabc', marginTop: 'auto' }} square>
             <Container maxWidth="lg">
                 <Box sx={{ display: {sm: 'flex'}, justifyContent: 'space-between', py: '50px' }}>
                     <Box sx={{ mb: '50px' }}>
@@ -15,6 +15,7 @@ const Footer = () => {
                         <Typography variant='body1'>Lets make your interior better</Typography>
                     </Box>
                     <Box sx={{ display: 'flex' }}>
+                        <Link id='footer-contacts'/>
                         <Box sx={{ display: 'flex', flexDirection: 'column', mr: '50px' }}>
                             <Typography variant='h6'>Contacts</Typography>
                             <Link href="tel:+380505005050" underline="none" color='inherit'>+38 (050) 500 5050</Link>
@@ -27,7 +28,7 @@ const Footer = () => {
                         </Box>
                     </Box>
                 </Box>
-                <Divider />
+                <Divider color='#e0e0e0'/>
                 <Typography variant='body1' py='50px' textAlign='center'>&copy;2022 DECO X. All rights reserved</Typography>
             </Container>
         </Paper>

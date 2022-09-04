@@ -1,4 +1,4 @@
-// import './App.scss';
+import './App.scss';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import { Routes, Route } from 'react-router-dom';
@@ -24,13 +24,15 @@ const darkTheme = createTheme({
     primary: {
       main: "#bddabc",
     },
+    text: {
+      dark: '#1b372d'
+    },
   },
   components: {
     MuiDrawer: {
       styleOverrides: {
         paper: {
-          backgroundColor: "#bddabc",
-         
+          backgroundColor: "#bddabc"
         }
       }
     }
@@ -43,7 +45,7 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <ThemeProvider theme={darkTheme}>
         <CssBaseline />
-        <Header />
+          <Header />
           <Routes>
             <Route path='/' element={<MainPage/>}/>
             <Route path='/home-decoration' element={<Deco/>}/>
@@ -53,7 +55,7 @@ function App() {
             <Route path='/furniture/:id' element={<ProductDetails category={'furniture'}/>}/>
             <Route path='/home-decoration/:id' element={<ProductDetails category={'home-decoration'}/>}/>
           </Routes>
-        <Footer/ >
+          <Footer />
       </ThemeProvider>
     </QueryClientProvider>
   );

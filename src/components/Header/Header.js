@@ -34,26 +34,19 @@ const Header = () => {
       <Container maxWidth="lg">
         <Toolbar disableGutters>
           <Drawer open={open} onClose={() => {setOpen(false)}} 
-          // PaperProps={{
-          //   sx: {
-          //   backgroundColor: "pink",
-          //   color: "red",
-          //   }
-          // }}
           >
             <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
               <IconButton onClick={() => {setOpen(false)}}>
-                <ChevronLeftIcon sx={{ ':hover': { color: '#aaa'} }}/>
+                <ChevronLeftIcon sx={{ ':hover': { color: 'text.dark' } }}/>
               </IconButton>
             </Box>
-            <Divider />
+            <Divider color='#e0e0e0'/>
             <Box>
             <List>
               {pages.map((page) => 
-              (<ListItem>
+              (<ListItem key={page.name}>
                 <Link 
-                key={page.name}
-                sx={{ ':hover': { color: '#ccc'}, textTransform: 'uppercase' }}
+                sx={{ ':hover': { color: 'text.dark'}, textTransform: 'uppercase' }}
                 component={RouterLink}
                 underline="none" 
                 color='inherit'
@@ -69,7 +62,7 @@ const Header = () => {
           </Drawer>
           <Box sx={{ display: { md: 'none' }}}>
             <IconButton onClick={() => {setOpen(true)}}>
-              <MenuIcon sx={{ ':hover': { color: '#ccc'} }}/>
+              <MenuIcon sx={{ ':hover': { color: 'text.secondary'} }}/>
             </IconButton>
           </Box> 
           <Typography
@@ -108,7 +101,13 @@ const Header = () => {
             (<Link 
               key={page.name}
               variant="body2"
-              sx={{ p: '25px 10px', borderBottom: '2px solid transparent', textTransform: 'uppercase', ':hover': { color: '#ccc', borderBottom: '2px solid #ccc'} }}
+              sx={{ 
+              p: '25px 10px', 
+              borderBottom: '2px solid transparent', 
+              textTransform: 'uppercase', 
+              ':hover': 
+              { color: 'text.secondary', borderBottom: '2px solid #ccc'} 
+            }}
               component={RouterLink}
               underline="none" 
               color='inherit'
@@ -119,17 +118,33 @@ const Header = () => {
           </Box>
             <Button 
             color='primary'
-            variant="outlined"
+            variant='outlined'
             endIcon={
               <Badge badgeContent={0}>
                 <LocalMallIcon />
               </Badge>
-          } 
+            } 
             component={RouterLink}
             to="/cart"
+            sx={{
+              display: { sm: 'flex', xs: 'none' }
+            }}
             >
               CART
             </Button>
+            <IconButton 
+            color='primary'
+            variant='text'
+            component={RouterLink}
+            to="/cart"
+            sx={{
+              display: { sm: 'none' }
+            }}
+            >
+              <Badge badgeContent={0}>
+                <LocalMallIcon />
+              </Badge>
+            </IconButton>
         </Toolbar>
       </Container>
     </AppBar>

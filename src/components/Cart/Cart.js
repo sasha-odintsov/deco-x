@@ -30,13 +30,13 @@ const Cart = () => {
     });
     console.log(items)
     return (
-        <Container maxWidth="lg" sx={{ my: '150px', minHeight: '40vh' }}>
-            <Box sx={{ maxWidth: '500px', margin: '0 auto' }}>
+        <Container maxWidth="lg" sx={{ margin: 'auto' }}>
+            <Box sx={{ maxWidth: '500px', margin: '150px auto' }}>
                 <Typography variant='h4'>Cart</Typography>
                 {!items.length && 
                 <Typography color='text.secondary' my={5} textAlign='center'>Cart is empty</Typography>
                 }
-                <List sx={{ width: '100%', bgcolor: 'background.paper' }}>
+                <List sx={{ width: '100%' }}>
                 {items.map((el) => {
                     return (
                         <>

@@ -27,7 +27,7 @@ const MainPage = () => {
                                 </Typography>
                                 <Stack my={4} spacing={2} direction="row">
                                     <Button variant="contained" component={RouterLink} to="/about">Read more</Button>
-                                    <Button variant="outlined" component={RouterLink} to="/">Contact us</Button>
+                                    <Button variant="outlined" href="#footer-contacts">Contact us</Button>
                                 </Stack>
                             </Grid>
                         </Grow>

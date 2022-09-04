@@ -10,6 +10,7 @@ import './ItemsList.scss';
 import Box from '@mui/material/Box';
 import { Link as RouterLink } from "react-router-dom";
 import Grow from '@mui/material/Grow';
+import CircularProgress from '@mui/material/CircularProgress';
 import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 
@@ -24,18 +25,26 @@ const ItemsList = ({ category }) => {
         return data.products;
       });
       if (isLoading) {
-        return (<div style={{ minHeight: '60vh'}}>Loading...</div>);
+        return (
+            <Box sx={{ minHeight: '60vh', mt: '50px', width: '100%', display: 'flex', justifyContent: 'center' }}>
+                <CircularProgress color="primary" />
+            </Box>
+        );
       }
       if (isError) {
-        return (<div style={{ minHeight: '60vh'}}>Error</div>);
+        return (
+            <Box sx={{ minHeight: '60vh', mt: '50px', width: '100%' }}>
+                <Typography textAlign='center'>Error</Typography>
+            </Box>
+        );
       }
       return  (
         <>
             {data.map((el) => {
                 return (
-                <Grow in={show} timeout={1000}>
+                <Grow key={el.id} in={show} timeout={1000}>
                 <Grid item xs={12} sm={6} md={4}>
-                    <Card key={el.id} sx={{ maxWidth: "100%", position: 'relative' }}>
+                    <Card sx={{ maxWidth: "100%", position: 'relative' }}>
                         <CardActionArea component={RouterLink} to={'/' + category + '/' + el.id}>
                             <CardMedia
                             component="img"
@@ -47,7 +56,6 @@ const ItemsList = ({ category }) => {
                                 <Typography 
                                 gutterBottom 
                                 variant="h5" 
-                                // component="div"
                                 sx={{whiteSpace: 'nowrap', overflow: 'hidden', textOveflow: 'ellipsis'}}
                                 >
                                     {el.title}
@@ -92,34 +100,6 @@ const ItemsList = ({ category }) => {
             })}
         </>
     )
-    // return data.map((el) => {
-    //     return (
-        //                 <Card key={el.id} >
-        //                     <CardActionArea>
-        //                         <CardMedia
-        //                         component="img"
-        //                         height="250"
-        //                         image={el.images[0]}
-        //                         alt={el.title}
-        //                         />
-        //                         <CardContent>
-        //                         <Typography gutterBottom variant="h5" component="div">
-        //                             {el.title}
-        //                         </Typography>
-        //                         <Typography variant="body2" color="text.secondary">
-        //                             {el.description}
-        //                         </Typography>
-        //                         </CardContent>
-        //                     </CardActionArea>
-        //                     <CardActions>
-        //                         <Button size="small" color="primary">
-        //                         Add to cart
-        //                         </Button>
-        //                     </CardActions>
-        //                 </Card>
-    //             
-    //     )
-    // })
 }
 
 export default ItemsList;

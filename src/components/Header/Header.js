@@ -37,19 +37,19 @@ const Header = () => {
           >
             <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
               <IconButton onClick={() => {setOpen(false)}}>
-                <ChevronLeftIcon sx={{ ':hover': { color: 'text.dark' } }}/>
+                <ChevronLeftIcon sx={{ color: 'text.grey', ':hover': { color: '#fff' } }}/>
               </IconButton>
             </Box>
-            <Divider color='#e0e0e0'/>
+            <Divider color='#c4c4c4'/>
             <Box>
             <List>
               {pages.map((page) => 
               (<ListItem key={page.name}>
                 <Link 
-                sx={{ ':hover': { color: 'text.dark'}, textTransform: 'uppercase' }}
+                sx={{ ':hover': { color: '#fff'}, textTransform: 'uppercase' }}
                 component={RouterLink}
                 underline="none" 
-                color='inherit'
+                color='text.grey'
                 to={page.href}
                 onClick={() => {setOpen(false)}}
                 >

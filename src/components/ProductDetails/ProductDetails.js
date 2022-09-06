@@ -14,10 +14,19 @@ import CircularProgress from '@mui/material/CircularProgress';
 import MobileStepper from '@mui/material/MobileStepper';
 import KeyboardArrowLeft from '@mui/icons-material/KeyboardArrowLeft';
 import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
+import Snackbar from '@mui/material/Snackbar';
 
 const ProductDetails = ({ category }) => {
     let { id } = useParams();
     const dispatch = useDispatch();
+
+    const [open, setOpen] = useState(false);
+    const handleClick = () => {
+        setOpen(true);
+    };
+    const handleClose = () => {
+        setOpen(false);
+    };
 
     const [activeStep, setActiveStep] = useState(0);
     const handleNext = () => {
@@ -72,7 +81,7 @@ const ProductDetails = ({ category }) => {
                             bgcolor: 'transparent',
                             }}
                             >
-                                <Typography variant='h6'>{data.title}</Typography>
+                                <Typography variant='h6' mb={1}>{data.title}</Typography>
                             </Paper>
                             <Box sx={{ width: '100%', maxHeight: 500, overflow: 'hidden', }}>
                                 <Box 
@@ -140,12 +149,19 @@ const ProductDetails = ({ category }) => {
                                             price: data.price
                                         }
                                     })
+                                    handleClick()
                                 }}
                                 >Add to cart</Button>
                             </Box>
                         </Box>
                     </Grid>
                 </Grid>
+                <Snackbar
+                open={open}
+                anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
+                onClose={handleClose}
+                message="Item added to cart"
+                />
             </Container>
         </Paper>
       )

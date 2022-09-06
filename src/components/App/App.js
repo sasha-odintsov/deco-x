@@ -25,7 +25,8 @@ const darkTheme = createTheme({
       main: "#bddabc",
     },
     text: {
-      dark: '#1b372d'
+      dark: '#1b372d',
+      grey: '#818181'
     },
   },
   components: {
@@ -33,6 +34,16 @@ const darkTheme = createTheme({
       styleOverrides: {
         paper: {
           backgroundColor: "#bddabc"
+        }
+      }
+    },
+    MuiSnackbar: {
+      styleOverrides: {
+        root: {
+          "& .MuiSnackbarContent-root": {
+            backgroundColor: "#1b372d",
+            color: '#fff',
+          }
         }
       }
     }

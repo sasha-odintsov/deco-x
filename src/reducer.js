@@ -1,11 +1,12 @@
-const INITIAL_STATE = {
-    cart: [],
-  };
+/* eslint-disable eqeqeq */
+const initialState = {
+  cart: [],
+};
   
-  // eslint-disable-next-line import/no-anonymous-default-export
-  export default (state = INITIAL_STATE, action = {}) => {
-    if (action.type === 'ADD_TO_CART') {
-      const cart = [...state.cart];
+const cart = (state = initialState, action = {}) => {
+  const cart = [...state.cart];
+  switch(action.type) {
+    case 'ADD_TO_CART':
       cart.push({
         id: action.payload.id,
         title: action.payload.title,
@@ -14,6 +15,22 @@ const INITIAL_STATE = {
         image: action.payload.image
       });
       return { cart: cart };
-    }
-    return state;
-  };
+    case 'DELETE':
+      return {
+        ...state,
+        cart: cart.filter((item) => item.id != action.payload.id)
+      }
+      
+    // case 'QTY_UP': 
+    // return Object.assign({}, cart.map((item) => {
+    //   if(item.id == action.payload.id) {
+    //     item.quantity += action.up;
+    //   }
+    //   return item;
+    // }))
+    default:
+      return state;
+  }
+};
+
+export default cart;

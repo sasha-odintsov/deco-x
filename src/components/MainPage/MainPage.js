@@ -23,7 +23,7 @@ const MainPage = () => {
                                     Create a home that defines who you are.
                                 </Typography>
                                 <Typography variant='subtitle1'>
-                                    The stylish interior makes us want to spend more time in it. We present interesting sets to create an apartment. We choose the right colors acoording to our own taste.
+                                    The stylish interior makes us want to spend more time in it. We present interesting sets to create an apartment. We choose the right colors according to our own taste.
                                 </Typography>
                                 <Stack my={4} spacing={2} direction="row">
                                     <Button variant="contained" component={RouterLink} to="/about">Read more</Button>

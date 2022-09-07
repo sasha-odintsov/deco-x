@@ -6,7 +6,7 @@ import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
 import { Button, CardActionArea, CardActions } from '@mui/material';
 import { useQuery } from 'react-query';
-import './ItemsList.scss';
+import './ItemsList.css';
 import Box from '@mui/material/Box';
 import { Link as RouterLink } from "react-router-dom";
 import Grow from '@mui/material/Grow';
@@ -29,7 +29,6 @@ const ItemsList = ({ category }) => {
     const { data, isLoading, isError } = useQuery('products-' + category, async () => {
         const response = await fetch(`https://dummyjson.com/products/category/${category}`);
         const data = await response.json();
-        console.log(data)
         return data.products;
       });
       if (isLoading) {

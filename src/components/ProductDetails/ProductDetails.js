@@ -61,7 +61,6 @@ const ProductDetails = ({ category }) => {
             </Box>
         );
       }
-      console.log(data)
       const steps = data.images;
       const maxSteps = steps.length;
       return (

@@ -1,4 +1,4 @@
-import './MainPage.scss';
+import './MainPage.css';
 import { useState, useEffect } from 'react';
 import { Link as RouterLink } from "react-router-dom";
 import Paper from '@mui/material/Paper';

@@ -30,7 +30,6 @@ const Cart = () => {
         });
         return newList;
     });
-    console.log(items);
     const total = items.reduce((total, amound) => total + amound.price, 0)
     return (
         <Container maxWidth="lg" sx={{ margin: 'auto' }}>
@@ -76,10 +75,10 @@ const Cart = () => {
                                     quantity: 
                                     </Typography>
                                     <ButtonGroup component='span' variant="text" aria-label="text button group" sx={{ alignItems: 'center' }}>
-                                        <IconButton onClick={() => {return el.count + 1}}>
+                                        <IconButton>
                                             <AddCircleOutlineIcon/>
                                         </IconButton>
-                                        <Typography component='span'>{el.count}</Typography>
+                                        <Typography component='span' color='text.secondary'>{el.count}</Typography>
                                         <IconButton>
                                             <RemoveCircleOutlineIcon/>
                                         </IconButton>

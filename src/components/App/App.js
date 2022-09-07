@@ -1,4 +1,4 @@
-import './App.scss';
+import './App.css';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import { Routes, Route } from 'react-router-dom';

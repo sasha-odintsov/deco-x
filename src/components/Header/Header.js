@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Link as RouterLink } from "react-router-dom";
+import { useSelector } from 'react-redux';
 import Link from '@mui/material/Link';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
@@ -25,6 +26,8 @@ const pages = [
 
 const Header = () => {
   const [open, setOpen] = useState(false);
+  const items = useSelector((state) => state.cart)
+  
   return (
     <AppBar 
     position="static" 
@@ -120,14 +123,14 @@ const Header = () => {
             color='primary'
             variant='outlined'
             endIcon={
-              <Badge badgeContent={0}>
+              <Badge badgeContent={items.length}>
                 <LocalMallIcon />
               </Badge>
             } 
             component={RouterLink}
             to="/cart"
             sx={{
-              display: { sm: 'flex', xs: 'none' }
+              display: { sm: 'flex', xs: 'none' }, py: '7px'
             }}
             >
               CART
@@ -141,7 +144,7 @@ const Header = () => {
               display: { sm: 'none' }
             }}
             >
-              <Badge badgeContent={0}>
+              <Badge badgeContent={items.length}>
                 <LocalMallIcon />
               </Badge>
             </IconButton>

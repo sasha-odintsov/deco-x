@@ -5,20 +5,20 @@ const initialState = {
   
 const cart = (state = initialState, action = {}) => {
   const cart = [...state.cart];
+  const { payload } = action;
   switch(action.type) {
     case 'ADD_TO_CART':
       cart.push({
-        id: action.payload.id,
-        title: action.payload.title,
-        description: action.payload.description,
-        price: action.payload.price,
-        image: action.payload.image
+        id: payload.id,
+        title: payload.title,
+        price: payload.price,
+        image: payload.image
       });
       return { cart: cart };
     case 'DELETE':
       return {
         ...state,
-        cart: cart.filter((item) => item.id != action.payload.id)
+        cart: cart.filter((item) => item.id != payload.id)
       }
       
     // case 'QTY_UP': 

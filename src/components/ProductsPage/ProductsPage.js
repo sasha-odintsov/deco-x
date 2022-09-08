@@ -1,9 +1,19 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+import { useState, useEffect } from 'react';
 import Paper from '@mui/material/Paper';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
+import Snackbar from '@mui/material/Snackbar';
 
-const ProductsPage = ({ title, dcrs, item }) => {
+const ProductsPage = ({ title, dcrs, item, handleClick }) => {
+    const [open, setOpen] = useState(false);
+    useEffect(() => {
+        setOpen(handleClick)
+    })
+    const handleClose = () => {
+        setOpen(false);
+    };
     return (
         <>
         <Paper>
@@ -23,6 +33,12 @@ const ProductsPage = ({ title, dcrs, item }) => {
                 </Grid>
             </Container>
         </Paper>
+        <Snackbar
+        open={open}
+        anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
+        onClose={handleClose}
+        message="Item added to cart"
+        />
         </>
     )
 }

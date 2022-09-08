@@ -11,21 +11,13 @@ import Box from '@mui/material/Box';
 import { Link as RouterLink } from "react-router-dom";
 import Grow from '@mui/material/Grow';
 import CircularProgress from '@mui/material/CircularProgress';
-import Snackbar from '@mui/material/Snackbar';
 import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 
-const ItemsList = ({ category }) => {
+const ItemsList = ({ category, handleClick }) => {
     const [show, setShow] = useState(false);
     useEffect(() => {setShow(true)}, []);
     const dispatch = useDispatch();
-    const [open, setOpen] = useState(false);
-    const handleClick = () => {
-        setOpen(true);
-    };
-    const handleClose = () => {
-        setOpen(false);
-    };
     const { data, isLoading, isError } = useQuery('products-' + category, async () => {
         const response = await fetch(`https://dummyjson.com/products/category/${category}`);
         const data = await response.json();
@@ -84,11 +76,10 @@ const ItemsList = ({ category }) => {
                                         id: el.id,
                                         image: el.images[0],
                                         title: el.title,
-                                        description: el.description,
                                         price: el.price
                                     }
                                 })
-                                handleClick()
+                                handleClick(true)
                             }}>
                             Add to cart
                             </Button>
@@ -106,12 +97,6 @@ const ItemsList = ({ category }) => {
                 </Grow>
             )
             })}
-            <Snackbar
-            open={open}
-            anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
-            onClose={handleClose}
-            message="Item added to cart"
-            />
         </>
     )
 }

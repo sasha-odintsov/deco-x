@@ -144,7 +144,6 @@ const ProductDetails = ({ category }) => {
                                             id: data.id,
                                             image: data.images[0],
                                             title: data.title,
-                                            description: data.description,
                                             price: data.price
                                         }
                                     })

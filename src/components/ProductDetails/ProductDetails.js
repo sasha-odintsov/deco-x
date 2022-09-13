@@ -21,20 +21,12 @@ const ProductDetails = ({ category }) => {
     const dispatch = useDispatch();
 
     const [open, setOpen] = useState(false);
-    const handleClick = () => {
-        setOpen(true);
-    };
-    const handleClose = () => {
-        setOpen(false);
-    };
+    const handleClick = () => setOpen(true);
+    const handleClose = () => setOpen(false);
 
     const [activeStep, setActiveStep] = useState(0);
-    const handleNext = () => {
-        setActiveStep((prevActiveStep) => prevActiveStep + 1);
-    };
-    const handleBack = () => {
-        setActiveStep((prevActiveStep) => prevActiveStep - 1);
-    };
+    const handleNext = () => setActiveStep((prevActiveStep) => prevActiveStep + 1);
+    const handleBack = () => setActiveStep((prevActiveStep) => prevActiveStep - 1);
 
     const { data, isLoading, isError } = useQuery('details-' + category + id, () => {
         return fetch(`https://dummyjson.com/products/category/${category}`)

@@ -11,9 +11,7 @@ const ProductsPage = ({ title, dcrs, item, handleClick }) => {
     useEffect(() => {
         setOpen(handleClick)
     })
-    const handleClose = () => {
-        setOpen(false);
-    };
+    const handleClose = () => setOpen(false);
     return (
         <>
         <Paper>

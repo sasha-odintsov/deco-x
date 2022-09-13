@@ -4,9 +4,7 @@ import ProductsPage from '../ProductsPage/ProductsPage';
 
 const Deco = () => {
     const [itemClick, setItemClick] = useState();
-    const getHandleClick = (click) => {
-        setItemClick(click)
-    }
+    const getHandleClick = (click) => setItemClick(click);
     return (
         <ProductsPage
         title='Decoration'

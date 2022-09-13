@@ -22,12 +22,8 @@ const About = () => {
     ];
     const maxSteps = images.length;
     const [activeStep, setActiveStep] = useState(0);
-    const handleNext = () => {
-        setActiveStep((prevActiveStep) => prevActiveStep + 1);
-    };
-    const handleBack = () => {
-        setActiveStep((prevActiveStep) => prevActiveStep - 1);
-    };
+    const handleNext = () => setActiveStep((prevActiveStep) => prevActiveStep + 1);
+    const handleBack = () => setActiveStep((prevActiveStep) => prevActiveStep - 1);
 
     return (
         <Container maxWidth="lg" sx={{ marginTop: '150px', minHeight: '50vh' }}>

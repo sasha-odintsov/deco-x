@@ -2,3 +2,9 @@ body{
     background: #121212;
     background-image: linear-gradient(rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.05));
 }
+
+#root {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}

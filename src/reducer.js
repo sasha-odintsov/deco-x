@@ -15,19 +15,20 @@ const cart = (state = initialState, action = {}) => {
         image: payload.image
       });
       return { cart: cart };
+
     case 'DELETE':
       return {
         ...state,
         cart: cart.filter((item) => item.id != payload.id)
       }
       
-    // case 'QTY_UP': 
-    // return Object.assign({}, cart.map((item) => {
-    //   if(item.id == action.payload.id) {
-    //     item.quantity += action.up;
-    //   }
-    //   return item;
-    // }))
+    case 'DELETE_ONE': 
+      const setIndex = cart.findIndex((item) => item.id == payload.id);
+      if (setIndex !== -1) {
+        cart.splice(setIndex, 1)
+      }
+      return { cart: cart };
+
     default:
       return state;
   }

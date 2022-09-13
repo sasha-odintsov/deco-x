@@ -25,12 +25,13 @@ const Cart = () => {
             title: groupItems[key][0].title,
             image: groupItems[key][0].image,
             count: groupItems[key].length,
-            price: groupItems[key][0].price * groupItems[key].length
+            price: groupItems[key][0].price,
+            total: groupItems[key][0].price * groupItems[key].length
           };
         });
         return newList;
     });
-    const total = items.reduce((total, amound) => total + amound.price, 0)
+    const total = items.reduce((total, amound) => total + amound.total, 0)
     return (
         <Container maxWidth="lg" sx={{ margin: 'auto' }}>
             <Box sx={{ maxWidth: '500px', margin: '150px auto' }}>
@@ -41,55 +42,74 @@ const Cart = () => {
                 <List sx={{ width: '100%' }}>
                 {items.map((el) => {
                     return (
-                        <ListItem 
-                        key={el.id}
-                        alignItems="flex-start"
-                        secondaryAction={
-                        <IconButton 
-                        edge="end" 
-                        aria-label="delete" 
-                        onClick={() => {
-                            dispatch({
-                                type: 'DELETE',
-                                payload: {
-                                    id: el.id
-                                }
-                            })
-                        }}>
-                            <DeleteIcon />
-                        </IconButton>
-                        }
-                        >
-                            <ListItemAvatar sx={{ mr: '20px' }}>
-                                <Avatar src={el.image} alt={el.title} variant='square' sx={{ width: 60, height: 60 }}/>
-                            </ListItemAvatar>
-                            <ListItemText >
-                                <Typography>
-                                code: {el.id}
-                                </Typography>
-                                <Typography mt={1} color='text.secondary'>
-                                {el.title}
-                                </Typography>
-                                <Box component='span' sx={{ display: 'flex', alignItems: 'center' }}>
-                                    <Typography color='text.secondary'>
-                                    quantity: 
+                        <Box key={el.id}>
+                            <ListItem 
+                            alignItems="flex-start"
+                            sx={{ padding: '20px 0' }}
+                            secondaryAction={
+                            <IconButton 
+                            edge="end" 
+                            aria-label="delete" 
+                            onClick={() => {
+                                dispatch({
+                                    type: 'DELETE',
+                                    payload: {
+                                        id: el.id
+                                    }
+                                })
+                            }}>
+                                <DeleteIcon />
+                            </IconButton>
+                            }
+                            >
+                                <ListItemAvatar sx={{ mr: '20px' }}>
+                                    <Avatar src={el.image} alt={el.title} variant='square' sx={{ width: 60, height: 60 }}/>
+                                </ListItemAvatar>
+                                <ListItemText >
+                                    <Typography>
+                                    Code: {el.id}
                                     </Typography>
-                                    <ButtonGroup component='span' variant="text" aria-label="text button group" sx={{ alignItems: 'center' }}>
-                                        <IconButton>
-                                            <AddCircleOutlineIcon/>
-                                        </IconButton>
-                                        <Typography component='span' color='text.secondary'>{el.count}</Typography>
-                                        <IconButton>
-                                            <RemoveCircleOutlineIcon/>
-                                        </IconButton>
-                                    </ButtonGroup>
-                                </Box>
-                                <Typography pb={3}>
-                                price: {el.price}$
-                                </Typography>
-                                <Divider />
-                            </ListItemText>
-                        </ListItem>                        
+                                    <Typography mt={1} color='text.secondary'>
+                                    {el.title}
+                                    </Typography>
+                                    <Box component='span' sx={{ display: 'flex', alignItems: 'center' }}>
+                                        <Typography color='text.secondary'>
+                                        Quantity: 
+                                        </Typography>
+                                        <ButtonGroup component='span' variant="text" aria-label="text button group" sx={{ alignItems: 'center' }}>
+                                            <IconButton onClick={() => {
+                                                dispatch({
+                                                    type: 'DELETE_ONE',
+                                                    payload: { 
+                                                        id: el.id
+                                                    }
+                                                })
+                                            }}>
+                                                <RemoveCircleOutlineIcon/>
+                                            </IconButton>
+                                            <Typography component='span' color='text.secondary'>{el.count}</Typography>
+                                            <IconButton  onClick={() => {
+                                                dispatch({
+                                                    type: 'ADD_TO_CART',
+                                                    payload: {
+                                                        id: el.id,
+                                                        image: el.image,
+                                                        title: el.title,
+                                                        price: el.price
+                                                    }
+                                                })
+                                            }}>
+                                                <AddCircleOutlineIcon/>
+                                            </IconButton>
+                                        </ButtonGroup>
+                                    </Box>
+                                    <Typography>
+                                    Price: {el.total}$
+                                    </Typography>
+                                </ListItemText>
+                            </ListItem>                        
+                            <Divider component='li' variant='inset'/>
+                        </Box>
                     )
                 })}
                 </List>

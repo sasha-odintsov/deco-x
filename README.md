@@ -2,7 +2,7 @@
 
 This is an internet shop built with React-Redux and Material UI library.
 
-In this shop used [DummyJSON](https://dummyjson.com) for getting fake JSON data for store products.
+Webstore uses [DummyJSON](https://dummyjson.com) for getting fake JSON data for store products.
 
 For this application were used following hooks and libraries: 
 - react-router for routing;
